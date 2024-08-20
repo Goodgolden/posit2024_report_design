@@ -1,0 +1,359 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\usetheme[]{CUDenver}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Rmarkdown and coding skills},
+  pdfauthor={Randy (Xin) Jin},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Rmarkdown and coding skills}
+\author{Randy (Xin) Jin}
+\date{2024-08-20}
+\institute{Biostatistic and Bioinformatic Department}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}[allowframebreaks]
+  \tableofcontents[hideallsubsections]
+\end{frame}
+\section{RMarkdown}\label{rmarkdown}
+
+\begin{frame}{RMarkdown \url{http://rmarkdown.rstudio.com}.}
+\phantomsection\label{rmarkdown-httprmarkdown.rstudio.com.}
+\begin{itemize}
+\item
+  R Markdown documents are fully reproducible.
+\item
+  Use a productive notebook interface to weave together narrative text
+  and code to produce elegantly formatted output.
+\item
+  Use multiple languages including R, Python, and SQL.
+\item
+  Support output formats including HTML, PDF, MS Word, Beamer, books,
+  dashboards, shiny applications, scientific articles, websites, and
+  more.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{YAML}
+\phantomsection\label{yaml}
+There are three basic components of an R Markdown document: the
+metadata, text, and code.
+
+\begin{itemize}
+\item
+  The syntax for the metadata is YAML
+\item
+  Also called the YAML metadata or the YAML frontmatter
+\item
+  Do not forget to indent the sub-fields of a top field properly
+\item
+  Here is the YAML for this beamer slides
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{YAML}
+\phantomsection\label{yaml-1}
+\begin{verbatim}
+---
+title: "Rmarkdown and coding skills"
+author: "Randy (Xin) Jin"
+date: "2024-08-20"
+institute: Biostatistic and Bioinformatice Department
+output:
+  beamer_presentation:
+    toc: true
+    keep_tex: yes
+    slide_level: 2
+    latex_engine: xelatex
+    theme: CUDenver
+---
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Text}
+\phantomsection\label{text}
+Inline LaTeX equations can be written in a pair of dollar signs using
+the LaTeX syntax, e.g.,
+\texttt{\$f(k)\ =\ \{n\ \textbackslash{}choose\ k\}\ p\^{}\{k\}\ (1-p)\^{}\{n-k\}\$}
+
+And in real file, it look like this
+\(f(k) = {n \choose k} p^{k} (1-p)^{n-k}\)
+
+The math expressions of the display style can be written in a pair of
+double dollar signs, e.g.,
+\texttt{\$\$f(k)\ =\ \{n\ \textbackslash{}choose\ k\}\ p\^{}\{k\}\ (1-p)\^{}\{n-k\}\$\$},
+
+And the output looks like this
+\[f(k) = {n \choose k} p^{k} (1-p)^{n-k}\]
+\end{frame}
+
+\begin{frame}[fragile]{Text}
+\phantomsection\label{text-1}
+For example type the matrix or array
+
+\begin{verbatim}
+$$
+\Theta = 
+\begin{pmatrix}
+  \alpha & \beta\\
+  \gamma & \delta
+\end{pmatrix}
+$$
+\end{verbatim}
+
+\[\Theta = \begin{pmatrix}\alpha & \beta\\
+\gamma & \delta
+\end{pmatrix}\]
+\end{frame}
+
+\begin{frame}{Code}
+\phantomsection\label{code}
+The syntax for text (also known as prose or narratives) is Markdown
+
+\begin{itemize}
+\item
+  A code chunk starts with three backticks
+\item
+  An inline R code expression
+\item
+  Remember to use the cheat sheet
+  \url{https://www.rstudio.com/resources/cheatsheets/} and Help
+  Reference
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Render/Knitr}
+\phantomsection\label{renderknitr}
+The usual way to compile an R Markdown document is to click the
+\textbf{Knit} button
+
+The corresponding keyboard shortcut is \textbf{Ctrl + Shift + K}
+(\textbf{Cmd + Shift + K} on macOS).
+
+Under the hood, RStudio calls the function
+\textbf{\texttt{rmarkdown::render()}} to render the document in a new R
+session.
+\end{frame}
+
+\begin{frame}{Templates and shortcuts}
+\phantomsection\label{templates-and-shortcuts}
+Let's see the templates and shortcuts in Rstudio \ldots{}
+\end{frame}
+
+\section{RStudio Snippets}\label{rstudio-snippets}
+
+\begin{frame}{Snippets}
+\phantomsection\label{snippets}
+Code snippets are text macros that are used for quickly inserting common
+snippets of code
+
+If you select the snippet from the completion list, it will be inserted
+along with several text placeholders which you can fill in by typing and
+then pressing Tab to advance to the next placeholder.
+
+\begin{itemize}
+\item
+  By default, the completion list will show up automatically and
+  activated via the \textbf{Tab} key.
+\item
+  If you have typed the character, then you can press
+  \textbf{Shift+Tab}.
+\end{itemize}
+
+Note that for Markdown snippets within R Markdown documents too
+\end{frame}
+
+\begin{frame}[fragile]{Customizing Snippets}
+\phantomsection\label{customizing-snippets}
+You can edit the built-in snippet definitions and even add snippets of
+your own via the \textbf{Edit Snippets} button in \textbf{Global Options
+-\textgreater{} Code}
+
+For example, try to type \texttt{matrix} and press \textbf{Shift+Tab} in
+Latex
+
+Or try to type \texttt{title} in the Rmarkdown and press
+\textbf{Shift+Tab}
+\end{frame}
+
+\begin{frame}[fragile]{Saving and Sharing Snippets}
+\phantomsection\label{saving-and-sharing-snippets}
+Once you've customized snippets for a given language, they are written
+into the \texttt{\textasciitilde{}/.R/snippets}directory.
+
+For example, the customized versions of \texttt{R} and \texttt{C/C++}
+snippets are written to:
+
+\begin{verbatim}
+~/.R/snippets/r.snippets
+~/.R/snippets/c_cpp.snippets
+\end{verbatim}
+\end{frame}
+
+\section{Tidyverse style}\label{tidyverse-style}
+
+\begin{frame}{Tidyverse \url{https://style.tidyverse.org/index.html}}
+\phantomsection\label{tidyverse-httpsstyle.tidyverse.orgindex.html}
+Good coding style is like correct punctuation: you can manage without
+it, butitsuremakesthingseasiertoread.
+
+It was derived from \textbf{Google's original R Style Guide} - but
+Google's current guide is derived from the tidyverse style guide.
+
+\begin{itemize}
+\item
+  Files and Syntax
+\item
+  Functions
+\item
+  Pipes
+\item
+  ggplot2
+\item
+  packages
+\end{itemize}
+\end{frame}
+
+\section{The Addins}\label{the-addins}
+
+\begin{frame}{The Addins}
+Addins are supper powerful tools to make your life easier.
+
+Addins provide a mechanism for executing R functions interactively from
+within the RStudio IDE---either through keyboard shortcuts, or through
+the \textbf{Addins} menu.
+\end{frame}
+
+\begin{frame}[fragile]{Some Addins}
+\phantomsection\label{some-addins}
+\begin{enumerate}
+\item
+  \texttt{styler} allows you to interactively restyle selected text,
+  files, or entire projects. It includes an RStudio add-in, the easiest
+  way to re-style existing code.
+\item
+  \texttt{openai} for automatic spelling, code commenting and code
+  creation. For automatic spelling, code commenting and code creation
+\item
+  \texttt{colourpicker} Especially for
+  \texttt{colourpicker::colourWidget()}
+\item
+  \texttt{ymlthis} makes it easy to write YAML front matter for R
+  Markdown and related documents.
+\item
+  \texttt{ViewPipeSteps} allows to print or view the output of your pipe
+  chain after each step.
+\end{enumerate}
+\end{frame}
+
+\section{QMD and Questions}\label{qmd-and-questions}
+
+\begin{frame}{QMD and Questions}
+Quarto is a multi-language, next-generation version of R Markdown
+
+\begin{itemize}
+\item
+  Removes the bookdown pkg as a dependency in my scientific writing, it
+  has simpler and universal cross-referencing
+\item
+  Multi-language and multi-engine: Python, R, and JavaScript via
+  integration with Jupyter, Knitr, and Observable.
+\item
+  Global chunk options set in YAML, rather than a separate setup chunk
+\item
+  Easier to show verbatim chunks, good for writing tutorials and guides
+\end{itemize}
+
+\ldots{}
+\end{frame}
+
+\end{document}
