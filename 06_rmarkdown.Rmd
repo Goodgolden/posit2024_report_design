@@ -1,0 +1,194 @@
+---
+title: "Rmarkdown and coding skills"
+author: "Randy (Xin) Jin"
+date: "`r Sys.Date()`"
+institute: Biostatistic and Bioinformatic Department
+output:
+  beamer_presentation:
+    toc: true
+    keep_tex: yes
+    slide_level: 2
+    latex_engine: xelatex
+    theme: CUDenver
+---
+
+# RMarkdown
+
+## RMarkdown <http://rmarkdown.rstudio.com>.
+
+-   R Markdown documents are fully reproducible.
+
+-   Use a productive notebook interface to weave together narrative text and code to produce elegantly formatted output.
+
+-   Use multiple languages including R, Python, and SQL.
+
+-   Support output formats including HTML, PDF, MS Word, Beamer, books, dashboards, shiny applications, scientific articles, websites, and more.
+
+
+
+## YAML
+
+There are three basic components of an R Markdown document: the metadata, text, and code.
+
+-   The syntax for the metadata is YAML
+
+-   Also called the YAML metadata or the YAML frontmatter
+
+-   Do not forget to indent the sub-fields of a top field properly
+
+-   Here is the YAML for this beamer slides
+
+## YAML
+
+```         
+---
+title: "Rmarkdown and coding skills"
+author: "Randy (Xin) Jin"
+date: "`r Sys.Date()`"
+institute: Biostatistic and Bioinformatice Department
+output:
+  beamer_presentation:
+    toc: true
+    keep_tex: yes
+    slide_level: 2
+    latex_engine: xelatex
+    theme: CUDenver
+---
+```
+
+## Text
+
+Inline LaTeX equations can be written in a pair of dollar signs using the LaTeX syntax, e.g., `$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$`
+
+And in real file, it look like this $f(k) = {n \choose k} p^{k} (1-p)^{n-k}$
+
+The math expressions of the display style can be written in a pair of double dollar signs, e.g., `$$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$$`,
+
+And the output looks like this $$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$$
+
+## Text
+
+For example type the matrix or array
+
+```         
+$$
+\Theta = 
+\begin{pmatrix}
+  \alpha & \beta\\
+  \gamma & \delta
+\end{pmatrix}
+$$
+```
+
+$$\Theta = \begin{pmatrix}\alpha & \beta\\
+\gamma & \delta
+\end{pmatrix}$$
+
+## Code
+
+The syntax for text (also known as prose or narratives) is Markdown
+
+-   A code chunk starts with three backticks
+
+-   An inline R code expression
+
+-   Remember to use the cheat sheet <https://www.rstudio.com/resources/cheatsheets/> and Help Reference
+
+## Render/Knitr
+
+The usual way to compile an R Markdown document is to click the **Knit** button
+
+The corresponding keyboard shortcut is **Ctrl + Shift + K** (**Cmd + Shift + K** on macOS).
+
+Under the hood, RStudio calls the function **`rmarkdown::render()`** to render the document in a new R session.
+
+## Templates and shortcuts
+
+Let's see the templates and shortcuts in Rstudio ...
+
+# RStudio Snippets
+
+## Snippets
+
+Code snippets are text macros that are used for quickly inserting common snippets of code
+
+If you select the snippet from the completion list, it will be inserted along with several text placeholders which you can fill in by typing and then pressing Tab to advance to the next placeholder.
+
+-   By default, the completion list will show up automatically and activated via the **Tab** key.
+
+-   If you have typed the character, then you can press **Shift+Tab**.
+
+::: callout-important
+Note that for Markdown snippets within R Markdown documents too
+:::
+
+## Customizing Snippets
+
+You can edit the built-in snippet definitions and even add snippets of your own via the **Edit Snippets** button in **Global Options -\> Code**
+
+
+For example, try to type `matrix` and press **Shift+Tab** in Latex
+
+Or try to type `title` in the Rmarkdown and press **Shift+Tab**
+
+## Saving and Sharing Snippets
+
+Once you've customized snippets for a given language, they are written into the `~/.R/snippets`directory.
+
+For example, the customized versions of `R` and `C/C++` snippets are written to:
+
+```         
+~/.R/snippets/r.snippets
+~/.R/snippets/c_cpp.snippets
+```
+
+# Tidyverse style
+
+## Tidyverse <https://style.tidyverse.org/index.html>
+
+Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread.
+
+It was derived from **Google's original R Style Guide** - but Google's current guide is derived from the tidyverse style guide.
+
+-   Files and Syntax
+
+-   Functions
+
+-   Pipes
+
+-   ggplot2
+
+-   packages
+
+# The Addins
+
+Addins are supper powerful tools to make your life easier.
+
+Addins provide a mechanism for executing R functions interactively from within the RStudio IDE---either through keyboard shortcuts, or through the **Addins** menu.
+
+## Some Addins
+
+1.  `styler` allows you to interactively restyle selected text, files, or entire projects. It includes an RStudio add-in, the easiest way to re-style existing code.
+
+2.  `openai` for automatic spelling, code commenting and code creation. For automatic spelling, code commenting and code creation
+
+3.  `colourpicker` Especially for `colourpicker::colourWidget()`
+
+4.  `ymlthis` makes it easy to write YAML front matter for R Markdown and related documents.
+
+5.  `ViewPipeSteps` allows to print or view the output of your pipe chain after each step.
+
+# QMD and Questions
+
+Quarto is a multi-language, next-generation version of R Markdown
+
+
+-   Removes the bookdown pkg as a dependency in my scientific writing, it has simpler and universal cross-referencing
+
+-   Multi-language and multi-engine: Python, R, and JavaScript via integration with Jupyter, Knitr, and Observable.
+
+-   Global chunk options set in YAML, rather than a separate setup chunk
+
+-   Easier to show verbatim chunks, good for writing tutorials and guides
+
+...
