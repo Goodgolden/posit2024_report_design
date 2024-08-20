@@ -14,7 +14,7 @@ output:
 
 # RMarkdown
 
-## RMarkdown <http://rmarkdown.rstudio.com>.
+## [RMarkdown](http://rmarkdown.rstudio.com)
 
 -   R Markdown documents are fully reproducible.
 
@@ -92,7 +92,7 @@ The syntax for text (also known as prose or narratives) is Markdown
 
 -   An inline R code expression
 
--   Remember to use the cheat sheet <https://www.rstudio.com/resources/cheatsheets/> and Help Reference
+-   Remember to use the [cheat sheet](https://www.rstudio.com/resources/cheatsheets/) and Help Reference
 
 ## Render/Knitr
 
@@ -144,7 +144,7 @@ For example, the customized versions of `R` and `C/C++` snippets are written to:
 
 # Tidyverse style
 
-## Tidyverse <https://style.tidyverse.org/index.html>
+## [Tidyverse](https://style.tidyverse.org/index.html)
 
 Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread.
 
