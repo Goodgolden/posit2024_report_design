@@ -1,6 +1,8 @@
 #let psc-report(
   title: "title",
-  town : "town",
+  author: "author",
+  email: "email",
+  proj: "proj",
   body,
 ) = {
 
@@ -12,20 +14,24 @@
  set page(
     "us-letter",
     margin: (left: 1in, right: 1in, top: 0.7in, bottom: 1in),
-    background: place(top, rect(fill: rgb("15397F"), width: 100%, height: 0.5in)),
+    background: place(top, rect(fill: rgb("#CFB97D"), width: 100%, height: 0.5in)),
     header: align(
       horizon,
       grid(
-        columns: (80%, 20%),
-        align(left, text(size: 20pt, fill: white, weight: "bold", title)),
-        align(right, text(size: 12pt, fill: white, weight: "bold", town)),
-      ),
-    ),
+        columns: (20%, 60%, 20%),
+        align(left, text(size: 25pt, fill: white, weight: "extrabold", title)),
+        align(center, text(size: 15pt, fill: black, weight: "semibold", proj)),
+        align(right, 
+              grid(rows: (60%, 40%),
+                   align(bottom, text(size: 10pt, fill: black, weight: "bold", author)),
+                   align(center, text(size: 5pt, fill: white, weight: "bold", email))),
+      ))),
     footer: align(
       grid(
-        columns: (40%, 60%),
-        align(horizon, text(fill: rgb("15397F"), size: 12pt, counter(page).display("1"))),
-        align(right, image("assets/psclogo.svg", height: 300%)),
+        columns: (45%, 10%, 45%),
+        align(left, image("img/CUAnschutz_h_clr.png", height: 50%)),
+        align(center, text(fill: rgb("#CFB97D"), size: 12pt, counter(page).display("1"))),
+        align(right, image("img/sph_wm_3icons_clr-black.png", height: 50%)),
       )
     )
   )

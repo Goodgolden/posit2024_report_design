@@ -1,0 +1,97 @@
+---
+title: "EJC Lab"
+author: "Randy Jin"
+email: "xin.2.jin@cuanschutz.edu"
+format: 
+  typst:
+    template-partials:
+      - typst-show.typ
+      - typst-template.typ
+params:
+  proj: "Session Topic: Quarto, Teaching"
+---
+
+# Pour Some Glitter On It: Custom Quarto Outputs
+
+## Goal for this chapter
+- [x] watch the recording again
+  - [x] Report Design in R: Small Tweaks that Make a Big Difference - David Keyes
+  - [x] Reproducible, dynamic, and elegant books with Quarto - Mine Cetinkaya-Rundel
+  - [x] Designing and Deploying Internal Quarto Templates - Meghan Hall
+  - [x] Closeread: bringing Scrollytelling to Quarto - Andrew Bray
+- [x] write down the key points
+- [x] update what we have for internal documents
+- [x] You are sublime!
+
+```{=typst}
+#outline()
+#set heading(numbering: "1.1.a.")
+```
+
+# Report Design in R: Small Tweaks that Make a Big Difference
+
+If you've ever tried to improve how your Quarto-based reports look, you probably felt overwhelmed. I'm a data person, you may have thought, not a designer. It's easy to drown in a sea of design advice, but we at R for the Rest of Us have found that a few small tweaks can make a big difference. In this talk, we will discuss ways that we have learned to make high-quality reports in R. These include ways you can consistently use brand fonts and colors in your report text and in your plots. All of these tweaks are small on their own, but, when combined, have the potential to make a big difference in the quality of your report design.
+
+## Key Points
+
+- Good Design Builds Trust
+
+- Aesthetic Usability Effect
+
+1.  Create a layout
+2.  Add colors from the
+3.  Brand fonts
+4.  Plots with the similar brand color and font
+
+Good Design is just some small tweaks that make a big difference
+
+-   [x] DO be consistent
+-   [x] DONOT use defaults
+
+Here is the link to the [typst basic](https://quarto.org/docs/output-formats/typst.html)
+
+Here are my color code:
+
+```{r}
+#| eval: false
+
+c("#FF9300", "#C04F15", "#FFC000",
+  "#FFD579", "#AB7942", "#FFC000", "#FF9300",
+  "#002060", "#0070C0", "#00B0F0",
+  "#EB50B0", "#FF8AD8", "#904DB5")
+```
+
+`from .qmd -\> typst-show.typ - \> typst-template.typ -\> pdf` this is the working process;
+use functions to make the plots consistent. We need to change and update the `.typ` files to make 
+the plots and layout nicely as for the report.
+
+We need the `typst-show.typ` and `typst-template.typ` to make the report look nice.
+but not all the parts can be done by the `YAML-typst` so we can add extra code with the 
+` ```{=typst} ``` `, for example, the table content for this report.
+[***typst***](https://typst.app/docs) is probably the next biggext thing for the Rmarkdown, it is a great tool to make the latex better.
+
+::: {.notes}
+But design is a skill that can be taught and R users already have many of the skills needed to do good design; 
+I'm not a designer either.
+
+There are at least four things to pay attention: Latex, Markdown, CSS, and now the `typst`.
+:::
+
+\newpage
+
+# Reproducible, dynamic, and elegant books with Quarto - Mine Cetinkaya-Rundel
+
+Building on my experience writing books with Quarto for various audiences (R learners, statistics learners, and Quarto learners), for various venues (self-published and publisher-published), in various formats (HTML books hosted online and PDF books printed), I will share best practices and tips and tricks for authoring reproducible, dynamic, and elegant books with Quarto. I will also highlight a few features from the recently-released Quarto 1.4 that pertain to books (e.g., flexible and custom cross-references, embedding computations from notebooks, and inline code in multiple languages) as well as share examples of how to make your web-hosted books more interactive with tools like webR and shinylive.
+
+\newpage
+
+# Designing and Deploying Internal Quarto Templates - Meghan Hall
+
+Quarto is a game-changer for creating reproducible, parameterized documents. But the beauty of Quarto—that it has so many different use cases with various output formats—can lead to disarray with numerous .qmd files floating around an organization and too much copy-paste when creating something new. Quarto templates are perfect for easing the burden of developing a report and instead standardizing the structure, style, and initial content of your projects, no matter the output format. We’ll discuss tips and tricks for implementing enough html and css to create beautiful documents that match your organization’s branding and also explore how easy it can be to deploy those Quarto templates with a single function within an internal R package.
+
+\newpage
+
+# Closeread: bringing Scrollytelling to Quarto - Andrew Bray
+
+Scrollytelling is a style of web design that transitions graphics and text as a user scrolls, allowing stories to progress naturally. Despite its power, scrollytelling typically requires specialist web dev skills beyond the reach of many data scientists. Closeread is a Quarto extension that makes a wide range of scrollytelling techniques available to authors without traditional web dev experience, with support for cross-fading plots, graphics and other chunk output alongside narrative content. You can zoom in on poems, prose and images, as well as highlighting important phrases of text.
+Finally, Closeread allows authors with experience in Observable JS to write their own animated graphics that update smoothly as scrolling progresses.
