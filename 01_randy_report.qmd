@@ -56,7 +56,7 @@ Here are my color code:
 #| eval: false
 
 c("#FF9300", "#C04F15", "#FFC000",
-  "#FFD579", "#AB7942", "#FFC000", "#FF9300",
+  "#FFD579", "#AB7942", "#FF9300",
   "#002060", "#0070C0", "#00B0F0",
   "#EB50B0", "#FF8AD8", "#904DB5")
 ```

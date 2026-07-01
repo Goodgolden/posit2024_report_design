@@ -4,23 +4,114 @@ format: html
 editor: visual
 ---
 
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
-
-```{r}
-1 + 1
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      warnings = FALSE,
+                      message = FALSE,
+                      comment = "#>",
+                      #results = "hide",
+                      digits = 4,
+                      error = FALSE)
+## clean the R environment
+graphics.off()
+rm(list = ls())
+freshr::freshr()
+## load packages
+library(here, quietly = TRUE)
+library(tidyverse, quietly = TRUE)
 ```
 
-You can add options to executable code like this
-
-```{r}
-#| echo: false
-2 * 2
+```{css, echo=FALSE}
+.scroll-100 {
+  max-height: 300px;
+  max-width: 1000px;
+  overflow-y: auto;
+  background-color: inherit;
+}
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+## Pandas, Polar, and Narwhals
+
+Extremely lightweight and extensible compatibility layer between dataframe libraries!
+
+- Full API support: cuDF, Modin, pandas, Polars, PyArrow
+
+- Lazy-only support: Dask
+
+- Interchange-level support: Ibis, Vaex, anything else which implements the DataFrame Interchange Protocol
+
+[The Python to Me talk](https://www.youtube.com/watch?v=FSH7BZ0tuE0)
+
+
+- Q: what is apche arrow and parquet format, why it is good?
+
+- A: Apache Arrow is a cross-language development platform for in-memory data. It specifies a standardized language-independent columnar memory format for flat and hierarchical data, organized for efficient analytic operations on modern hardware like CPUs and GPUs. The Arrow memory format also supports zero-copy reads for lightning-fast data access without serialization overhead.
+
+- Q: what is lazy execution for dataframe?
+
+- A: Lazy execution is a technique used in computer programming to defer the execution of a function or calculation until the result is actually needed. This can be useful when the calculation is expensive and the result may not be needed, or when the calculation is not possible until some other condition is met.
+
+## Plotly and the Narwhals
+
+This issue is to explore what changes we would need to make 
+to use Narwhals in Plotly Express. with `pyarrow` and `pandas`
+
+```{r, class.output="scroll-100"}
+
+Sys.setenv(NOT_CRAN = "true")
+install.packages("tidypolars",
+                 repos = c("https://community.r-multiverse.org", 
+                           'https://cloud.r-project.org'))
+
+```
+
+
+- Spark and Dask are the two most popular big data processing frameworks in Python.
+
+Spark is a distributed computing framework that is designed to be fast and easy to use. 
+Dask is a parallel computing library that is designed to be flexible and scalable. 
+Spark is better suited for large-scale data processing, 
+while Dask is better suited for smaller-scale data processing. 
+Spark is more mature and has a larger user base, 
+while Dask is newer and has a smaller user base. 
+Spark is more feature-rich and has better support for machine learning and graph processing,
+while Dask is more lightweight and has better support for interactive computing and data visualization.
+
+
+One target is to make the dataframe change from one engine to another
+library maintainers for the APIs that can make things easier like SQL
+
+- eager execution is the default in pandas, but lazy execution is the default in narwhals
+
+- pandas and pyarrows not extra end for the narwhal 
+
+- shiny will have a new release, it will support narwhals, 1.2 version will be released next week
+
+- cudf installed, for eager execution, for polar, pandas, and pyarrows.
+- it could also work for the narwhal, for lazy execution
+
+- categorical data works for the narwhal
+
+
+## R Multiverse
+
+The R Multiverse is a community-driven project to provide a unified platform
+for R package developers to distribute their packages.
+It is a collaboration between the R Consortium, R-hub, and the R-universe project.
+
+Say no to things we cannot fix, and keep the focus on the elephant, not the rabbits
+
+Do not attach to any codes you wrote, 
+it is not your baby, 
+it is a tool to solve a problem
+
+## Sidebar
+
+Ichimoku Kinko Hyo (IKH) (Japanese: 一目均衡表), usually shortened to "Ichimoku", 
+is a technical analysis method that builds on candlestick charting 
+to improve the accuracy of forecast price moves.
+
+The Comprehensive R Archive Network (CRAN) is a network of servers around the world that contain the source code, documentation, and add-on packages for R. CRAN is the primary repository for R packages.
+
+
+
